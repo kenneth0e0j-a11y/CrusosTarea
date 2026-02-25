@@ -1,1 +1,1 @@
-web: gunicorn --chdir Universidad Universidad.wsgi
+web: gunicorn wsgi
