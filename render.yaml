@@ -3,5 +3,5 @@ services:
     name: universidad
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && python Universidad/manage.py collectstatic --no-input && python Universidad/manage.py migrate"
-    startCommand: "gunicorn --chdir Universidad Universidad.wsgi"
+    buildCommand: pip install -r requirements.txt && python Universidad/manage.py collectstatic --no-input && python Universidad/manage.py migrate
+    startCommand: gunicorn wsgi
