@@ -24,6 +24,4 @@ urlpatterns = [
     path('registroCurso/', registroCurso),
     path('eliminarCurso/<str:codigo>/', eliminarCurso),
     path('edicionCurso/<str:codigo>/', editarCurso),
-    path('editarCurso/',editarCurso),
-    
 ]

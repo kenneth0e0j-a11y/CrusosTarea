@@ -17,18 +17,20 @@ def eliminarCurso(request, codigo):
     curso.delete()
     return redirect('/')
 
-def editarCurso(request, codigo):
-    curso = Curso.objects.get(codigo=codigo)
-    return render(request, 'edicionCurso.html', {'curso': curso})
-
-def editarCurso(request):
-    codigo = request.POST['txtCodigo']
-    nombre = request.POST['txtNombre']
-    creditos = request.POST['txtCredito']
-    
-    curso = Curso.objects.get(codigo=codigo)
-    curso.nombre = nombre
-    curso.creditos = creditos
-    curso.save()
-    
-    return redirect('/')
+def editarCurso(request, codigo=None):
+    if request.method == 'GET':
+        # Mostrar el formulario de edición
+        curso = Curso.objects.get(codigo=codigo)
+        return render(request, 'edicionCurso.html', {'curso': curso})
+    elif request.method == 'POST':
+        # Guardar los cambios
+        codigo = request.POST['txtCodigo']
+        nombre = request.POST['txtNombre']
+        creditos = request.POST['txtCredito']
+        
+        curso = Curso.objects.get(codigo=codigo)
+        curso.nombre = nombre
+        curso.creditos = creditos
+        curso.save()
+        
+        return redirect('/')
