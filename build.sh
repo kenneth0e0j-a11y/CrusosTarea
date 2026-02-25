@@ -3,6 +3,8 @@ set -o errexit
 
 pip install -r requirements.txt
 
+cd Universidad
+
 python manage.py collectstatic --no-input
 
 python manage.py migrate
